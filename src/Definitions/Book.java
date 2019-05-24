@@ -1,12 +1,13 @@
 package Definitions;
 
-import Operational.crud;
+import Operational.Readable;
 
-public class Book extends Items implements crud {
+public class Book extends Items implements Readable {
 
 	private String author;
 	private String publisher;
 	private String supplier;
+	private boolean restricted;
 
 	public Book(int id, String name, double price, String author, String publisher, String supplier) {
 
@@ -15,6 +16,17 @@ public class Book extends Items implements crud {
 		this.author = author;
 		this.publisher = publisher;
 		this.supplier = supplier;
+	}
+
+	public Book(int id, String name, double price, String author, String publisher, String supplier,
+			boolean restricted) {
+
+		super(id, name, price);
+
+		this.author = author;
+		this.publisher = publisher;
+		this.supplier = supplier;
+		this.restricted = restricted;
 	}
 
 	public String getAuthor() {
@@ -41,10 +53,15 @@ public class Book extends Items implements crud {
 		this.supplier = supplier;
 	}
 
-	@Override
-	public void create() {
-		// TODO Auto-generated method stub
-
+	public boolean getRestricted() {
+		return restricted;
 	}
 
+	public void setRestricted(boolean restricted) {
+		this.restricted = restricted;
+	}
+
+	public String outputToConsole() {
+		return "Author: " + author + "Publisher: " + publisher + "Supplier: " + supplier + "Restricted: " + restricted;
+	}
 }
