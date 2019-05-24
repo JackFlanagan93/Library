@@ -1,8 +1,8 @@
 package Definitions;
 
-import Operational.Readable;
+import Operational.CheckInAble;
 
-public class Book extends Items implements Readable {
+public class Book extends Items implements CheckInAble {
 
 	private String author;
 	private String publisher;
@@ -61,7 +61,11 @@ public class Book extends Items implements Readable {
 		this.restricted = restricted;
 	}
 
-	public String outputToConsole() {
-		return "Author: " + author + "Publisher: " + publisher + "Supplier: " + supplier + "Restricted: " + restricted;
+	@Override
+	public void checkInBook() {
+		// public void checkInBook(Object book) {
+		// Definitions.ItemTracking.masterDatabase.add((Items) book);
+		Definitions.ItemTracking.masterDatabase.add(this);
 	}
+
 }
